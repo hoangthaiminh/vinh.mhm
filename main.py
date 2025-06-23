@@ -105,6 +105,7 @@ from fastapi.responses import JSONResponse, PlainTextResponse, StreamingResponse
 import random
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import io
+import os
 import base64
 
 app = FastAPI()
@@ -13225,6 +13226,7 @@ async def refresh_code(idStr: str = ""):
 
 
 async def create_captcha(text, font_size=40, font_path="arial.ttf", height=80):
+    font_path = os.path.join(os.path.dirname(__file__), "Roboto-Regular.ttf")
     try:
         font = ImageFont.truetype(font_path, font_size)
     except IOError:
